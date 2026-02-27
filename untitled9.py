@@ -10,3 +10,38 @@ Original file is located at
 import streamlit as st
 st.title("Sentiment analysis")
 st.text_input("Enter your text")
+def analyze_sentiment(text_input):
+    """Analyzes the sentiment of the input text using TextBlob."""
+    blob = TextBlob(text_input)
+    polarity = blob.sentiment.polarity
+    subjectivity = blob.sentiment.subjectivity
+
+    if polarity > 0.0:
+        sentiment = 'Positive'
+        emoji = ':smile:'
+    elif polarity < 0.0:
+        sentiment = 'Negative'
+        emoji = ':disappointed:'
+    else:
+        sentiment = 'Neutral'
+        emoji = ':expressionless:'
+
+    return sentiment, emoji, polarity, subjectivity
+
+ 
+st.write("Enter text below to analyze its sentiment (positive, negative, or neutral).")
+
+# Create a text area for user input
+user_input = st.text_area("Enter Your Text", "Type here", height=150)
+
+# Create an "Analyze" button
+if st.button("Analyze Sentiment"):
+    if user_input.strip() == "" or user_input.strip() == "Type here":
+        st.warning("Please enter some text for analysis.")
+    else:
+        sentiment, emoji, polarity, subjectivity = analyze_sentiment(user_input)
+
+        st.subheader("Analysis Results:")
+        st.markdown(f"**Overall Sentiment:** {sentiment} {emoji}")
+        st.info(f"**Polarity Score:** {polarity:.2f} (ranges from -1 to 1)")
+        st.info(f"**Subjectivity Score:** {subjectivity:.2f} (ranges from 0 to 1)")
