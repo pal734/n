@@ -2,34 +2,29 @@ import streamlit as st
 import google.generativeai as genai
 st.title("Sentiment analysis ")
 st.text_input("Enter your text")
- GOOGLE_API_KEY = os.environ.get("OPENAI_API_KEY")
-genai.configure(api_key=GOOGLE_API_KEY)
-if 'sentiment' not in st.session_state:
-  st.session_state.sentiment ={
-      'positive': 'Positive',
-      'negative': 'Negative',
-      'neutral': 'Neutral'
-  }
-  def get_gemini_response(input_prompt, image_data=None):
-  model = genai.GenerativeModel('gemini-2.5-flash')
-  content = [input_prompt]
-  if image_data:
-    content.extend(image_data)
+from textblob import TextBlob
 
-  try:
-    response = model.generate_content(content)
-    return response.text
-  except Exception as e:
-    return f"Error: {str(e)}"
+# The text you want to analyze
+text = st.text_input("Enter your text")
 
-def input_image_setup(uploaded_file):
-  if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
-    image_parts = [
-        {
-            "mime_type": uploaded_file.type,
-            "data": bytes_data
-        }
-    ]
-    return image_parts
-  return None  
+# Create a TextBlob object
+# Using the 'text' variable which is already defined in this cell
+analysis = TextBlob(text)
+
+# Access the sentiment property
+# The sentiment property returns a named tuple of the form Sentiment(polarity, subjectivity)
+polarity = analysis.sentiment.polarity
+subjectivity = analysis.sentiment.subjectivity
+
+# Print the results
+print(f"Original Text: {text}")
+print(f"Polarity: {polarity}")
+print(f"Subjectivity: {subjectivity}")
+
+# Classify the sentiment based on polarity
+if polarity > 0:
+    print("Sentiment: Positive 😊")
+elif polarity < 0:
+    print("Sentiment: Negative 😡")
+else:
+    print("Sentiment: Neutral 😐")
