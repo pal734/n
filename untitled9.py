@@ -8,6 +8,6 @@ Original file is located at
 """
 import streamlit as st
 st.set_page_config(page_title="Sentiment Analysis", layout="wide")
- 
+ st.title("Sentiment analysis ")
 st.text_input("Enter your text")
  
