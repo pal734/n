@@ -9,33 +9,4 @@ Original file is located at
 import streamlit as st
 st.title("Sentiment analysis ")
 st.text_input("Enter your text")
-import nltk
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-
-# Download the VADER lexicon (do this once)
-nltk.download('vader_lexicon', quiet=True)
-
-# Initialize the SentimentIntensityAnalyzer
-analyzer = SentimentIntensityAnalyzer()
-
-def analyze_sentiment_vader(sentence):
-    """
-    Analyzes the sentiment of a sentence using VADER and prints the result.
-    """
-    sentiment_scores = analyzer.polarity_scores(sentence)
-    compound_score = sentiment_scores['compound']
-
-    print(f"Sentence: '{sentence}'")
-    print(f"Scores: {sentiment_scores}")
-
-    if compound_score >= 0.05:
-        print("Overall Sentiment: Positive")
-    elif compound_score <= -0.05:
-        print("Overall Sentiment: Negative")
-    else:
-        print("Overall Sentiment: Neutral")
-    print("-" * 30)
-
-# Test with examples
-# Using the 'user_input' variable which is available in the kernel state
-analyze_sentiment_vader(user_input)
+ 
