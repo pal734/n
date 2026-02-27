@@ -8,5 +8,5 @@ Original file is located at
 """
 
 import streamlit as st
-st.title("hello chai app")
+st.title("Sentiment analysis")
 st.text_input("Enter your text")
