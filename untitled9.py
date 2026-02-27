@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1eoUVXqrZP1Inm-Kc2FBgmEaExhErPPed
 """
 import streamlit as st
-st.title("Sentiment analysis ")
+st.set_page_config(page_title="Sentiment Analysis", layout="wide")
+ 
 st.text_input("Enter your text")
  
