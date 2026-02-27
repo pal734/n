@@ -1,5 +1,5 @@
 import streamlit as st
-import google.generativeai as genai
+ 
 st.title("Sentiment analysis ")
 st.text_input("Enter your text")
 from textblob import TextBlob
