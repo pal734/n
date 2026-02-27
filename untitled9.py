@@ -7,8 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1eoUVXqrZP1Inm-Kc2FBgmEaExhErPPed
 """
 import streamlit as st 
-import os
-import google.generativeai as genai
+ 
 import streamlit as st
 from openai import OpenAI
 
