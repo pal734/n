@@ -2,8 +2,7 @@ import streamlit as st
  
 st.title("Sentiment analysis ")
 st.text_input("Enter your text")
-pip install streamlit textblob
-python -m textblob.download_corpora
+ 
 import streamlit as st
 from textblob import TextBlob
 import emoji
