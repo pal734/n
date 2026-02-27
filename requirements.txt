@@ -1,6 +1,2 @@
 streamlit
-openai
-pandas
 textblob
-genai
-emoji
